@@ -14,6 +14,8 @@ $inipath = php_ini_loaded_file();
 
 print_r($inipath);
 
+
+
 // Change the time zone to Europe / Madrid.
 // Maximum execution time "max_execution_time"  from 30 to 60 seconds.
 // Add a comment at the end of the file.
