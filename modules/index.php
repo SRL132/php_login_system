@@ -9,22 +9,24 @@
     <title>Login Form</title>
 </head>
 <?php
-$isLogout = $_GET["logout"];
+//$isLogout = $_GET["logout"];
 require 'session_variables.php';
+
 echo "Hi welcome to the login system!";
 echo "<br><br>";
+
 ?>
 <body>
     <main>
         <section>
-          <form action="validate.php" method="post">
+          <form action="validate.php" method="post" class="col-auto">
             <label for="username" class="form-label">Username:</label>
             <input type="text" name="username" class="form-control" placeholder="input your username"/>
             <br><br>
             <label for="password" class="form-label">Password:</label>
-            <input type="text" name="password" class="form-control" placeholder="input your password"/>
+            <input type="password" name="password" class="form-control" placeholder="input your password"/>
             <br><br>
-            <div><?=(isset($_GET["logout"] && $_GET["logout"]))? "Logged out successfully" : "" ?></div>
+            <div><? (isset($_GET["logout"] && $_GET["logout"]))? "Logged out successfully" : "" ?></div>
             <button type="sumbit" class="btn btn-primary mb-3">Login</button>
           </form>
         </section>
