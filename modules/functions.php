@@ -10,11 +10,17 @@ function validateUser(){
 if (isset ($_POST["username"]) && isset ($_POST["password"])) {
     $conn = mysqli_connect("localhost", "root", "123456", "user_registry","3307");
     $username=$_POST["username"];
-    $password=$_POST["password"];    
+    $password=$_POST["password"];
+    $cyphering = "AES-128-CTR";
+    $option=0;
+    $encryption_iv="1234567890123456abcdefghijklmn";
+    $encryption_key="hello";  
+    $encryptedPassword = openssl_encrypt($password, $cyphering,$encryption_iv,$option,$encryption_key);    
     $sql = "SELECT password FROM user_registry WHERE username ='$username'";
     $res=mysqli_query($conn, $sql);
     $row=mysqli_fetch_assoc($res);
-    $row["password"]===$password? header("Location:./panel.php") : header("Location:./index.php");
+    print_r($res);
+    $row["password"]===$encryptedPassword? header("Location:./panel.php") : header("Location:./index.php");
  };
 };
 
@@ -56,7 +62,6 @@ function registerUser(){
     // Close connection
     mysqli_close($conn);        
     };
-
 }
 
 //close session
